@@ -1,0 +1,20 @@
+import { Colors } from "@/const/colors";
+import { CSSProperties } from "styled-components";
+
+export interface TextProps {
+  children: React.ReactNode;
+  color?: Colors;
+
+  transform?: CSSProperties["textTransform"];
+  align?: CSSProperties["textAlign"];
+
+  margin?: CSSProperties["margin"];
+  padding?: CSSProperties["padding"];
+
+  size?: CSSProperties["fontSize"];
+  weight?: CSSProperties["fontWeight"];
+  fontStyle?: CSSProperties["fontStyle"];
+
+  lineHeight?: CSSProperties["lineHeight"];
+  letterSpacing?: CSSProperties["letterSpacing"];
+}
