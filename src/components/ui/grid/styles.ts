@@ -33,7 +33,7 @@ const Container = styled.div<ContainerProps>({
 const ContainerMaxWidth = styled.div({
   maxWidth: 1216,
   width: "100%",
-  margin: "0 20px",
+  // margin: "0 20px",
   "@media screen and (max-width: 768px)": {
     maxWidth: 336,
   },

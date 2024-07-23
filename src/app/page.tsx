@@ -1,6 +1,7 @@
 import { Header } from "@/components/header";
 import { HomePageHeroSection } from "@/views/home/HeroSection";
 import { HomePagePhraseSection } from "@/views/home/PhraseSection";
+import { HomePageSolutionsSection } from "@/views/home/SolutionsSection";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Header />
       <HomePageHeroSection />
       <HomePagePhraseSection />
+      <HomePageSolutionsSection />
     </>
   );
 }

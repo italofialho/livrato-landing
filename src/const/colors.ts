@@ -6,7 +6,9 @@ export type Colors =
   | "darkVanilla"
   | "cultured"
   | "deepJungleGreen"
-  | "khaki";
+  | "khaki"
+  | "gainsboro"
+  | "chamoisee";
 
 export const colors: Record<Colors, string> = {
   white: "#fff",
@@ -18,4 +20,6 @@ export const colors: Record<Colors, string> = {
   cultured: "#F9F7F3",
   deepJungleGreen: "#00474D",
   khaki: "#BCA68A",
+  gainsboro: "#DCDCDC",
+  chamoisee: "#9A785C",
 };
