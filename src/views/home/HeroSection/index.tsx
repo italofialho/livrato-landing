@@ -9,24 +9,24 @@ import { AnimatedText } from "@/components/animatedText";
 import { Spacer } from "@/components/ui/spacer";
 import { Col, Container, Row } from "@/components/ui/grid";
 
-export function HomePageHeroSection() {
+export default function HomePageHeroSection() {
   const livratoWords = [
-    "liberdade",
-    "rentabilidade",
-    "legado",
-    "longevidade",
-    "família",
+    "liberdade.",
+    "rentabilidade.",
+    "legado.",
+    "longevidade.",
+    "família.",
   ];
 
   return (
     <S.Container>
       <S.Content>
         <Container>
-          <Row alignItems="center">
-            <Col size={{ lg: 6, sm: 12 }}>
+          <Row alignItems="center" justifyContent="space-between">
+            <Col size={{ lg: 6.5, sm: 12 }}>
               <S.TextSection>
                 <Text
-                  size={40}
+                  size={44}
                   weight={700}
                   lineHeight="100%"
                   color="deepJungleGreen"
@@ -35,7 +35,7 @@ export function HomePageHeroSection() {
                   <Text color="khaki">
                     <AnimatedText words={livratoWords} />
                   </Text>
-                  .
+                  {/* . */}
                 </Text>
 
                 <Spacer mb={16} />
@@ -79,12 +79,12 @@ export function HomePageHeroSection() {
               </S.TextSection>
             </Col>
 
-            <Col size={{ lg: 6, sm: 12 }}>
+            <Col size={{ lg: 5.5, sm: 12 }} alignItems="center">
               <Image
                 alt="Uma familia com 4 pessoas felizes"
                 src="/assets/banner_hero.png"
-                width={573}
-                height={482}
+                width={552}
+                height={462}
                 priority
                 quality={100}
               />

@@ -25,6 +25,12 @@ const RowAlignmentMixin = css<RowProps>((props) => ({
   flexDirection: props.direction,
 }));
 
+const ColAlignmentMixin = css<ColProps>((props) => ({
+  justifyContent: props.justifyContent,
+  alignItems: props.alignItems,
+  flexDirection: props.direction,
+}));
+
 const Container = styled.div<ContainerProps>({
   display: "flex",
   justifyContent: "center",
@@ -55,22 +61,25 @@ const Row = styled.div<RowProps>(({ gapRow, gapColumn }) => [
   RowAlignmentMixin,
 ]);
 
-const Col = styled.div<ColProps>(({ size }) => ({
-  display: getSizing(size, "lg") === 0 ? "none" : "flex",
-  flexFlow: "column",
-  boxSizing: "border-box",
-  flexBasis: `calc( (100% - (12/${getSizing(
-    size,
-    "lg"
-  )} - 1) * 32px) / 12 *${getSizing(size, "lg")} )`,
-
-  "@media screen and (max-width: 768px)": {
-    display: getSizing(size, "sm") === 0 ? "none" : "flex",
+const Col = styled.div<ColProps>(({ size }) => [
+  {
+    display: getSizing(size, "lg") === 0 ? "none" : "flex",
+    flexFlow: "column",
+    boxSizing: "border-box",
     flexBasis: `calc( (100% - (12/${getSizing(
       size,
-      "sm"
-    )} - 1) * 16px) / 12 *${getSizing(size, "sm")} )`,
+      "lg"
+    )} - 1) * 32px) / 12 *${getSizing(size, "lg")} )`,
+
+    "@media screen and (max-width: 768px)": {
+      display: getSizing(size, "sm") === 0 ? "none" : "flex",
+      flexBasis: `calc( (100% - (12/${getSizing(
+        size,
+        "sm"
+      )} - 1) * 16px) / 12 *${getSizing(size, "sm")} )`,
+    },
   },
-}));
+  ColAlignmentMixin,
+]);
 
 export { Container, ContainerMaxWidth, Row, Col };

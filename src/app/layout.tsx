@@ -17,6 +17,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
+      <meta
+        name="format-detection"
+        content="telephone=no, date=no, email=no, address=no"
+      />
+
       <body className={leagueSpartan.className}>
         <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
       </body>

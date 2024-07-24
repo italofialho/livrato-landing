@@ -13,7 +13,7 @@ export const Card = styled.div({
 
   "&:hover": {
     "> span": {
-      color: `${colors.white} !important`,
+      color: `${colors.white}`,
     },
     backgroundColor: colors.deepJungleGreen,
   },
@@ -23,22 +23,24 @@ export const Cards = styled.div`
   ${Card}#solution-card-1 {
     border-radius: 16px 0px 0px 0px;
     border-right: unset;
+    border-bottom: unset;
+  }
+  ${Card}#solution-card-2 {
+    border-right: unset;
+    border-bottom: unset;
   }
   ${Card}#solution-card-3 {
     border-radius: 0px 16px 0px 0px;
-    border-left: unset;
+    border-bottom: unset;
   }
   ${Card}#solution-card-4 {
-    border-top: unset;
-    border-right: unset;
     border-radius: 0px 0px 0px 16px;
+    border-right: unset;
   }
   ${Card}#solution-card-5 {
-    border-top: unset;
+    border-right: unset;
   }
   ${Card}#solution-card-6 {
-    border-top: unset;
-    border-left: unset;
     border-radius: 0px 0px 16px 0px;
   }
 `;

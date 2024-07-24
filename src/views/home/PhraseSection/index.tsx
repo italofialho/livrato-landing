@@ -11,7 +11,7 @@ import BackgroundImg from "./background.svg";
 
 import Image from "next/image";
 
-export function HomePagePhraseSection() {
+export default function HomePagePhraseSection() {
   return (
     <Container>
       <Spacer mb={80} />

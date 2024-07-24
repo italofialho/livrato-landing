@@ -5,6 +5,8 @@ import * as S from "./styles";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
+import ArrowRight from "./icons/arrow.svg";
+
 const cards = [
   {
     title: "Gestão de orçamento",
@@ -44,7 +46,7 @@ const cards = [
   },
 ];
 
-export function HomePageSolutionsSection() {
+export default function HomePageSolutionsSection() {
   return (
     <Container>
       <Spacer mb={80} />
@@ -81,7 +83,7 @@ export function HomePageSolutionsSection() {
       <S.Cards>
         <Row gapRow={0} gapColumn={0}>
           {cards.map((card, index) => (
-            <Col key={index} size={{ lg: 4, sm: 12 }}>
+            <Col key={card.icon} size={{ lg: 4, sm: 12 }}>
               <S.Card id={`solution-card-${index + 1}`}>
                 <Image
                   alt={card.title}
@@ -111,7 +113,7 @@ export function HomePageSolutionsSection() {
 
                 <Spacer mb={32} />
 
-                <Button color="white">
+                <Button color="transparent">
                   <Text
                     color="chamoisee"
                     size={16}
@@ -120,6 +122,13 @@ export function HomePageSolutionsSection() {
                   >
                     Quero contratar
                   </Text>
+                  <Spacer mr={16} />
+                  <Image
+                    alt="Flecha apontando para a direita"
+                    src={ArrowRight}
+                    width={27}
+                    height={15}
+                  />
                 </Button>
               </S.Card>
             </Col>
