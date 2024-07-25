@@ -21,7 +21,13 @@ export const Container = styled.button<Omit<ButtonProps, "children">>(
 
     "&:hover": {
       cursor: "pointer",
-      opacity: 0.8,
+      opacity: 0.6,
     },
-  }),
+
+    "&:disabled": {
+      opacity: 0.4,
+      cursor: "not-allowed",
+      // background: `#BDBDBD`,
+    },
+  })
 );

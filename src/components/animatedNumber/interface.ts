@@ -4,4 +4,8 @@ export interface AnimatedNumberProps {
   $prefix?: string;
   $suffix?: string;
   $container?: React.ReactNode;
+  $format?: (n: number) => string;
+  $onEnd?: () => void;
+  $delay?: number;
+  $duration?: number;
 }

@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 
 import { Header } from "@/components/header";
 import HeroSection from "@/views/home/HeroSection";
-import TestimonialsSection from "@/views/home/TestimonialsSection";
+import SimulatorSection from "@/views/home/SimulatorSection";
 
 const PhraseSection = dynamic(() => import("@/views/home/PhraseSection"));
 
@@ -14,9 +14,9 @@ const IndependentConsultancySection = dynamic(
   () => import("@/views/home/IndependentConsultancy")
 );
 
-// const TestimonialsSection = dynamic(
-//   () => import("@/views/home/TestimonialsSection")
-// );
+const TestimonialsSection = dynamic(
+  () => import("@/views/home/TestimonialsSection")
+);
 
 export default function Home() {
   return (
@@ -28,6 +28,7 @@ export default function Home() {
       <BenefitsSection />
       <IndependentConsultancySection />
       <TestimonialsSection />
+      <SimulatorSection />
     </>
   );
 }

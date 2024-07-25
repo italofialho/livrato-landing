@@ -31,9 +31,12 @@ function AnimatedNumberClientSide(props: Readonly<AnimatedNumberProps>) {
     <CountUp
       start={props.$startValue}
       end={props.$value}
-      duration={2}
+      duration={props.$duration ?? 2}
       prefix={props.$prefix}
       suffix={props.$suffix}
+      formattingFn={props.$format}
+      onEnd={props.$onEnd}
+      delay={props.$delay}
     />
   );
 }

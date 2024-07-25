@@ -81,9 +81,9 @@ export default function HomePageTestimonialsSection() {
             <S.Cards>
               {cards.map((card) => (
                 <S.Card key={card.name}>
-                  {Array.from({ length: card.stars }).map(() => (
+                  {Array.from({ length: card.stars }).map((_, index) => (
                     <Image
-                      key={`star_${card.name}`}
+                      key={`star_${card.name}_${index + 1}`}
                       src="/assets/icons/star_solid.svg"
                       width={16}
                       height={16}
