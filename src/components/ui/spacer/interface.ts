@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
 
 type breakpoints =
   | {
@@ -9,18 +9,18 @@ type breakpoints =
   | undefined;
 
 interface SpacerProps {
-  className?: string;
   children?: ReactNode;
-  margin?: breakpoints;
-  mt?: breakpoints;
-  mr?: breakpoints;
-  mb?: breakpoints;
-  ml?: breakpoints;
-  padding?: breakpoints;
-  pt?: breakpoints;
-  pr?: breakpoints;
-  pb?: breakpoints;
-  pl?: breakpoints;
+  $className?: string;
+  $margin?: breakpoints;
+  $mt?: breakpoints;
+  $mr?: breakpoints;
+  $mb?: breakpoints;
+  $ml?: breakpoints;
+  $padding?: breakpoints;
+  $pt?: breakpoints;
+  $pr?: breakpoints;
+  $pb?: breakpoints;
+  $pl?: breakpoints;
 }
 
 export type { SpacerProps, breakpoints };

@@ -1,13 +1,19 @@
+/* eslint-disable */
+import dynamic from "next/dynamic";
+
 import { Header } from "@/components/header";
 import HomePageHeroSection from "@/views/home/HeroSection";
-
-import dynamic from "next/dynamic";
 
 const HomePagePhraseSection = dynamic(
   () => import("@/views/home/PhraseSection")
 );
+
 const HomePageSolutionsSection = dynamic(
   () => import("@/views/home/SolutionsSection")
+);
+
+const HomePageBenefitsSection = dynamic(
+  () => import("@/views/home/BenefitsSection")
 );
 
 export default function Home() {
@@ -17,6 +23,7 @@ export default function Home() {
       <HomePageHeroSection />
       <HomePagePhraseSection />
       <HomePageSolutionsSection />
+      <HomePageBenefitsSection />
     </>
   );
 }

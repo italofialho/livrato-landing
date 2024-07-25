@@ -1,7 +1,8 @@
 "use client";
 
-import { colors } from "@/const/colors";
 import styled, { keyframes } from "styled-components";
+
+import { colors } from "@/const/colors";
 
 const bounce = keyframes`
   0%, 20%, 50%, 80%, 100% {
@@ -13,7 +14,7 @@ const bounce = keyframes`
   60% {
     transform: translateY(15px);
   }
-`
+`;
 
 export const Background = styled.div({
   backgroundColor: colors.deepJungleGreen,
@@ -36,7 +37,7 @@ export const DetailContainer = styled.div({
 
 export const BackgroundImage = styled.div({
   position: "absolute",
-  display: 'none'
+  display: "none",
 });
 
 export const ArrowImage = styled.div`

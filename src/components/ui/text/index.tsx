@@ -1,3 +1,5 @@
+import React from "react";
+
 import { TextProps } from "./interface";
 import * as S from "./styles";
 

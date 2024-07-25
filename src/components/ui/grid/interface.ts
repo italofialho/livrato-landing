@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+
 import { CSSProperties } from "styled-components";
 
 type DecimalCols =
@@ -31,22 +32,22 @@ interface ContainerProps {
 
 interface RowProps {
   children?: ReactNode;
-  justifyContent?: CSSProperties["justifyContent"];
-  alignItems?: CSSProperties["alignItems"];
-  direction?: CSSProperties["flexDirection"];
-  gapRow?: gap;
-  gapColumn?: gap;
-  id?: string;
+  $justifyContent?: CSSProperties["justifyContent"];
+  $alignItems?: CSSProperties["alignItems"];
+  $direction?: CSSProperties["flexDirection"];
+  $gapRow?: gap;
+  $gapColumn?: gap;
+  $id?: string;
 }
 
 interface ColProps {
   children?: ReactNode;
-  justifyContent?: CSSProperties["justifyContent"];
-  alignItems?: CSSProperties["alignItems"];
-  direction?: CSSProperties["flexDirection"];
-  size: breakpoints;
-  offset?: breakpoints;
-  id?: string;
+  $justifyContent?: CSSProperties["justifyContent"];
+  $alignItems?: CSSProperties["alignItems"];
+  $direction?: CSSProperties["flexDirection"];
+  $size: breakpoints;
+  $offset?: breakpoints;
+  $id?: string;
 }
 
 export type { ContainerProps, RowProps, ColProps, gap, breakpoints };

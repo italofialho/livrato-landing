@@ -1,5 +1,8 @@
+import React from 'react'
+
 import type { Metadata } from "next";
 import { League_Spartan as LeagueSpartan } from "next/font/google";
+
 import "the-new-css-reset/css/reset.css";
 import StyledComponentsRegistry from "@/lib/registry";
 

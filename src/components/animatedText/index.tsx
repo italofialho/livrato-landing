@@ -1,7 +1,9 @@
 "use client";
 
-import TextTransition, { presets } from "react-text-transition";
 import React from "react";
+
+import TextTransition, { presets } from "react-text-transition";
+
 import { AnimatedTextProps } from "./interface";
 
 const ANIMATION_DELAY = 3_000;
@@ -18,7 +20,7 @@ export function AnimatedText(props: Readonly<AnimatedTextProps>) {
     }, ANIMATION_START_DELAY);
   }, []);
 
-  if (typeof window === "undefined" || isServer) return currentWord;
+  if (typeof window === "undefined" || isServer) return <>{currentWord}</>;
 
   return <AnimatedTextClientSide {...props} />;
 }
@@ -42,10 +44,10 @@ function AnimatedTextClientSide(props: Readonly<AnimatedTextProps>) {
       isFirst ? ANIMATION_DELAY - ANIMATION_START_DELAY : ANIMATION_DELAY
     );
     return () => clearTimeout(intervalId);
-  }, []);
+  }, [isFirst, props.words.length]);
 
   return (
-    <TextTransition springConfig={presets.stiff} inline>
+    <TextTransition springConfig={presets.wobbly} inline>
       {currentWord}
     </TextTransition>
   );

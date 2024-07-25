@@ -1,6 +1,7 @@
 "use client";
 
 import styled, { css } from "styled-components";
+
 import type {
   breakpoints,
   ColProps,
@@ -20,15 +21,15 @@ function getGap(gap: gap, breakpoint: "lg" | "sm") {
 }
 
 const RowAlignmentMixin = css<RowProps>((props) => ({
-  justifyContent: props.justifyContent,
-  alignItems: props.alignItems,
-  flexDirection: props.direction,
+  justifyContent: props.$justifyContent,
+  alignItems: props.$alignItems,
+  flexDirection: props.$direction,
 }));
 
 const ColAlignmentMixin = css<ColProps>((props) => ({
-  justifyContent: props.justifyContent,
-  alignItems: props.alignItems,
-  flexDirection: props.direction,
+  justifyContent: props.$justifyContent,
+  alignItems: props.$alignItems,
+  flexDirection: props.$direction,
 }));
 
 const Container = styled.div<ContainerProps>({
@@ -45,38 +46,38 @@ const ContainerMaxWidth = styled.div({
   },
 });
 
-const Row = styled.div<RowProps>(({ gapRow, gapColumn }) => [
+const Row = styled.div<RowProps>(({ $gapRow, $gapColumn }) => [
   {
     display: "flex",
     flexWrap: "wrap",
     boxSizing: "border-box",
-    gap: `${getGap(gapRow, "lg")}px
-    ${getGap(gapColumn, "lg")}px`,
+    gap: `${getGap($gapRow, "lg")}px
+    ${getGap($gapColumn, "lg")}px`,
 
     "@media screen and (max-width: 768px)": {
-      gap: `${getGap(gapRow, "sm")}px
-      ${getGap(gapColumn, "sm")}px`,
+      gap: `${getGap($gapRow, "sm")}px
+      ${getGap($gapColumn, "sm")}px`,
     },
   },
   RowAlignmentMixin,
 ]);
 
-const Col = styled.div<ColProps>(({ size }) => [
+const Col = styled.div<ColProps>(({ $size }) => [
   {
-    display: getSizing(size, "lg") === 0 ? "none" : "flex",
+    display: getSizing($size, "lg") === 0 ? "none" : "flex",
     flexFlow: "column",
     boxSizing: "border-box",
     flexBasis: `calc( (100% - (12/${getSizing(
-      size,
-      "lg"
-    )} - 1) * 32px) / 12 *${getSizing(size, "lg")} )`,
+      $size,
+      "lg",
+    )} - 1) * 32px) / 12 *${getSizing($size, "lg")} )`,
 
     "@media screen and (max-width: 768px)": {
-      display: getSizing(size, "sm") === 0 ? "none" : "flex",
+      display: getSizing($size, "sm") === 0 ? "none" : "flex",
       flexBasis: `calc( (100% - (12/${getSizing(
-        size,
-        "sm"
-      )} - 1) * 16px) / 12 *${getSizing(size, "sm")} )`,
+        $size,
+        "sm",
+      )} - 1) * 16px) / 12 *${getSizing($size, "sm")} )`,
     },
   },
   ColAlignmentMixin,

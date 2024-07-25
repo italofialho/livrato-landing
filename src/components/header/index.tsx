@@ -1,8 +1,11 @@
-import { Logo } from "../logo";
+import React from "react";
+
 import { Button } from "@/components/ui/button";
+
 import * as S from "./styles";
-import { Text } from "../ui/text";
+import { Logo } from "../logo";
 import { Container } from "../ui/grid";
+import { Text } from "../ui/text";
 
 const navItems: Array<{ title: string; url: string }> = [
   { title: "Soluções", url: "#solucoes" },
@@ -27,16 +30,16 @@ export function Header() {
           </S.Links>
 
           <Button
-            color="richBlack"
-            padding="16px 32px 14px 32px"
-            borderRadius={8}
+            $color="richBlack"
+            $padding="16px 32px 14px 32px"
+            $borderRadius={8}
           >
             <Text
-              transform="uppercase"
-              weight={600}
-              size={18}
-              lineHeight="14px"
-              letterSpacing="0.54px"
+              $transform="uppercase"
+              $weight={600}
+              $size={18}
+              $lineHeight="14px"
+              $letterSpacing="0.54px"
             >
               Entrar em contato
             </Text>

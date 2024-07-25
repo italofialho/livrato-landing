@@ -1,7 +1,8 @@
 "use client";
 
-import { colors } from "@/const/colors";
 import styled from "styled-components";
+
+import { colors } from "@/const/colors";
 
 export const Card = styled.div({
   border: `1px solid ${colors.gainsboro}`,
