@@ -10,7 +10,9 @@ export type Colors =
   | "gainsboro"
   | "chamoisee"
   | "transparent"
-  | "viridianGreen";
+  | "viridianGreen"
+  | "whiteSmoke"
+  | "davysGrey";
 
 export const colors: Record<Colors, string> = {
   white: "#fff",
@@ -26,4 +28,6 @@ export const colors: Record<Colors, string> = {
   chamoisee: "#9A785C",
   transparent: "transparent",
   viridianGreen: "#008E97",
+  whiteSmoke: "#F5F5F5",
+  davysGrey: "#525252",
 };

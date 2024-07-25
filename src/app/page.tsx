@@ -1,34 +1,33 @@
-/* eslint-disable */
 import dynamic from "next/dynamic";
 
 import { Header } from "@/components/header";
-import HomePageHeroSection from "@/views/home/HeroSection";
+import HeroSection from "@/views/home/HeroSection";
+import TestimonialsSection from "@/views/home/TestimonialsSection";
 
-const HomePagePhraseSection = dynamic(
-  () => import("@/views/home/PhraseSection")
-);
+const PhraseSection = dynamic(() => import("@/views/home/PhraseSection"));
 
-const HomePageSolutionsSection = dynamic(
-  () => import("@/views/home/SolutionsSection")
-);
+const SolutionsSection = dynamic(() => import("@/views/home/SolutionsSection"));
 
-const HomePageBenefitsSection = dynamic(
-  () => import("@/views/home/BenefitsSection")
-);
+const BenefitsSection = dynamic(() => import("@/views/home/BenefitsSection"));
 
 const IndependentConsultancySection = dynamic(
   () => import("@/views/home/IndependentConsultancy")
 );
 
+// const TestimonialsSection = dynamic(
+//   () => import("@/views/home/TestimonialsSection")
+// );
+
 export default function Home() {
   return (
     <>
       <Header />
-      <HomePageHeroSection />
-      <HomePagePhraseSection />
-      <HomePageSolutionsSection />
-      <HomePageBenefitsSection />
+      <HeroSection />
+      <PhraseSection />
+      <SolutionsSection />
+      <BenefitsSection />
       <IndependentConsultancySection />
+      <TestimonialsSection />
     </>
   );
 }

@@ -29,7 +29,7 @@ export function AnimatedNumber(props: Readonly<AnimatedNumberProps>) {
 function AnimatedNumberClientSide(props: Readonly<AnimatedNumberProps>) {
   return (
     <CountUp
-      start={props.$startValue ?? 1}
+      start={props.$startValue}
       end={props.$value}
       duration={2}
       prefix={props.$prefix}
