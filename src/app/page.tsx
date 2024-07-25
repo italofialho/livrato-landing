@@ -16,6 +16,10 @@ const HomePageBenefitsSection = dynamic(
   () => import("@/views/home/BenefitsSection")
 );
 
+const IndependentConsultancySection = dynamic(
+  () => import("@/views/home/IndependentConsultancy")
+);
+
 export default function Home() {
   return (
     <>
@@ -24,6 +28,7 @@ export default function Home() {
       <HomePagePhraseSection />
       <HomePageSolutionsSection />
       <HomePageBenefitsSection />
+      <IndependentConsultancySection />
     </>
   );
 }
