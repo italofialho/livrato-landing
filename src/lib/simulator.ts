@@ -37,15 +37,3 @@ export function calculateFinalAmount(options: InvestmentOptions): number {
     (monthlyValue * (Math.pow(1 + monthlyRate, totalMonths) - 1)) / monthlyRate
   );
 }
-
-// // Exemplo de uso:
-// const options: InvestmentOptions = {
-//   initialValue: 1000,
-//   monthlyValue: 200,
-//   interestRate: 5,
-//   isAnnualRate: true,
-//   timePeriod: 2,
-//   isYears: true,
-// };
-
-// console.log('Final Amount:', calculateFinalAmount(options));

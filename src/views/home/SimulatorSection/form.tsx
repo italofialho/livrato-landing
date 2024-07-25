@@ -13,6 +13,7 @@ import { Select } from "@/components/ui/select";
 import { Spacer } from "@/components/ui/spacer";
 import { Text } from "@/components/ui/text";
 import { calculateFinalAmount, InvestmentOptions } from "@/lib/simulator";
+import { storeSimulation } from "@/lib/storage";
 
 import * as S from "./styles";
 
@@ -49,6 +50,7 @@ export default function SimulatorForm() {
     const finalValue = calculateFinalAmount(options);
     setShowResult(true);
     setResult(finalValue);
+    storeSimulation({ name: data.goalName, ...options });
   };
 
   const toBRL = (value: number) => {
