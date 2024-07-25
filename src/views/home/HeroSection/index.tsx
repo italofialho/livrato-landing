@@ -88,6 +88,7 @@ export default function HomePageHeroSection() {
                 height={425}
                 priority
                 quality={100}
+                style={{ borderRadius: 24, objectFit: "cover" }}
               />
             </Col>
           </Row>

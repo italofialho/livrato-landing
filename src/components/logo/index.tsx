@@ -20,6 +20,8 @@ export function Logo(props: Readonly<LogoProps>) {
       src={currentLogo}
       width={props.width}
       height={props.height}
+      priority
+      quality={100}
     />
   );
 }

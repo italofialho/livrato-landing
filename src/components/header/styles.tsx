@@ -8,6 +8,8 @@ export const Background = styled.div({
   backgroundColor: colors.white,
   position: "sticky",
   top: 0,
+  zIndex: 100,
+  boxShadow: "0px 0px 5px 0px rgba(0,0,0,0.1)",
 });
 
 export const Container = styled.div({

@@ -81,7 +81,7 @@ export default function HomePageSolutionsSection() {
       <Spacer $mb={48} />
 
       <S.Cards>
-        <Row $gapRow={0} $gapColumn={0}>
+        <Row $gapRow={0} $gapColumn={0} $justifyContent="center">
           {cards.map((card, index) => (
             <Col key={card.icon} $size={{ lg: 4, sm: 12 }}>
               <S.Card id={`solution-card-${index + 1}`}>
