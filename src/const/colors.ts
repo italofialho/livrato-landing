@@ -14,7 +14,10 @@ export type Colors =
   | "whiteSmoke"
   | "davysGrey"
   | "brightGray"
-  | "gray";
+  | "gray"
+  | "bone"
+  | "lightTaupe"
+  | "alabaster";
 
 export const colors: Record<Colors, string> = {
   white: "#fff",
@@ -34,4 +37,7 @@ export const colors: Record<Colors, string> = {
   davysGrey: "#525252",
   brightGray: "#EFEFEF",
   gray: "#7C7C7C",
+  bone: "#E0D8C8",
+  lightTaupe: "#A88967",
+  alabaster: "#F0ECE4",
 };
