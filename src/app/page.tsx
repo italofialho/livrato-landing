@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 
 import { Header } from "@/components/header";
 import HeroSection from "@/views/home/HeroSection";
+import MarqueeSection from "@/views/home/MarqueeSection";
 import SimulatorSection from "@/views/home/SimulatorSection";
 
 const PhraseSection = dynamic(() => import("@/views/home/PhraseSection"));
@@ -29,6 +30,7 @@ export default function Home() {
       <IndependentConsultancySection />
       <TestimonialsSection />
       <SimulatorSection />
+      <MarqueeSection />
     </>
   );
 }
