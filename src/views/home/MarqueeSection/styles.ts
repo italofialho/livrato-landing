@@ -42,4 +42,5 @@ export const MarqueeSecondary = styled.div(() => [
 export const Marquees = styled.div({
   position: "relative",
   backgroundColor: colors.whiteSmoke,
+  overflowX: "hidden",
 });
