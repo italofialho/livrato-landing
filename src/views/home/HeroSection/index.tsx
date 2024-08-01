@@ -7,18 +7,11 @@ import { Button } from "@/components/ui/button";
 import { Col, Container, Row } from "@/components/ui/grid";
 import { Spacer } from "@/components/ui/spacer";
 import { Text } from "@/components/ui/text";
+import { livratoWords } from "@/const/words";
 
 import * as S from "./styles";
 
 export default function HomePageHeroSection() {
-  const livratoWords = [
-    "liberdade.",
-    "rentabilidade.",
-    "legado.",
-    "longevidade.",
-    "família.",
-  ];
-
   return (
     <S.Container>
       <S.Content>
@@ -72,7 +65,7 @@ export default function HomePageHeroSection() {
                         $lineHeight="14px"
                         $letterSpacing="0.54px"
                       >
-                        DESEJO CONTRATAR
+                        Desejo contratar
                       </Text>
                     </Button>
                   </Col>

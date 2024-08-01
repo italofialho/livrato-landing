@@ -1,51 +1,54 @@
 import dynamic from "next/dynamic";
 
+import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import HeroSection from "@/views/home/HeroSection";
 import PhraseSection from "@/views/home/PhraseSection";
 
+export const isProduction = process.env.NODE_ENV === "production";
+
 const SolutionsSection = dynamic(
   () => import("@/views/home/SolutionsSection"),
   {
-    ssr: false,
+    ssr: !isProduction,
   }
 );
 
 const BenefitsSection = dynamic(() => import("@/views/home/BenefitsSection"), {
-  ssr: false,
+  ssr: !isProduction,
 });
 
 const IndependentConsultancySection = dynamic(
   () => import("@/views/home/IndependentConsultancy"),
   {
-    ssr: false,
+    ssr: !isProduction,
   }
 );
 
 const TestimonialsSection = dynamic(
   () => import("@/views/home/TestimonialsSection"),
   {
-    ssr: false,
+    ssr: !isProduction,
   }
 );
 
 const SimulatorSection = dynamic(
   () => import("@/views/home/SimulatorSection"),
   {
-    ssr: false,
+    ssr: !isProduction,
   }
 );
 
 const MarqueeSection = dynamic(() => import("@/views/home/MarqueeSection"), {
-  ssr: false,
+  ssr: !isProduction,
 });
 
 const JourneySection = dynamic(() => import("@/views/home/JourneySection"), {
-  ssr: false,
+  ssr: !isProduction,
 });
 
 const ContactSection = dynamic(() => import("@/views/home/ContactSection"), {
-  ssr: false,
+  ssr: !isProduction,
 });
 
 export default function Home() {
@@ -62,6 +65,7 @@ export default function Home() {
       <MarqueeSection />
       <JourneySection />
       <ContactSection />
+      <Footer />
     </>
   );
 }

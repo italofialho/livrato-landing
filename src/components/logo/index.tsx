@@ -8,8 +8,8 @@ interface LogoProps {
 
 export function Logo(props: Readonly<LogoProps>) {
   const logoByType: Record<LogoProps["type"], string> = {
-    default: "/logo.svg",
-    white: "/logo_white.svg",
+    default: "/assets/logo.svg",
+    white: "/assets/logo_white.svg",
   };
 
   const currentLogo = logoByType[props.type];

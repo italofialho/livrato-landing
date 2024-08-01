@@ -2,8 +2,14 @@
 
 import { useState } from "react";
 
+import { zodResolver } from "@hookform/resolvers/zod";
 import ReactCardFlip from "react-card-flip";
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import {
+  Controller,
+  FieldError,
+  SubmitHandler,
+  useForm,
+} from "react-hook-form";
 
 import { AnimatedNumber } from "@/components/animatedNumber";
 import { Button } from "@/components/ui/button";
@@ -15,17 +21,8 @@ import { Text } from "@/components/ui/text";
 import { calculateFinalAmount, InvestmentOptions } from "@/lib/simulator";
 import { storeSimulation } from "@/lib/storage";
 
+import { SimulatorFormData, SimulatorSchema } from "./schema";
 import * as S from "./styles";
-
-type Inputs = {
-  goalName: string;
-  initialValue: number;
-  monthlyValue: number;
-  interestRate: number;
-  isAnnualRate: "true" | "false";
-  timePeriod: number;
-  isYears: "true" | "false";
-};
 
 export default function SimulatorForm() {
   const [result, setResult] = useState<number | null>(null);
@@ -35,16 +32,28 @@ export default function SimulatorForm() {
     handleSubmit,
     control,
     getValues,
-    formState: { errors, isValid },
-  } = useForm<Inputs>({ mode: "onChange" });
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    watch,
+    formState: { isValid, ...formState },
+  } = useForm<SimulatorFormData>({
+    resolver: zodResolver(SimulatorSchema),
+    // mode: "onBlur",
+    defaultValues: {
+      isAnnualRate: true,
+      isYears: true,
+    },
+  });
+
+  const isAnnualRate = watch("isAnnualRate");
+  const isYears = watch("isYears");
+
+  const onSubmit: SubmitHandler<SimulatorFormData> = (data) => {
     const options: InvestmentOptions = {
       initialValue: data.initialValue,
       monthlyValue: data.monthlyValue,
       interestRate: data.interestRate,
-      isAnnualRate: data.isAnnualRate === "true",
+      isAnnualRate: data.isAnnualRate,
       timePeriod: data.timePeriod,
-      isYears: data.isYears === "true",
+      isYears: data.isYears,
     };
 
     const finalValue = calculateFinalAmount(options);
@@ -60,136 +69,168 @@ export default function SimulatorForm() {
     });
   };
 
+  const renderErrorMessage = (error?: FieldError) => {
+    if (!error?.message) return null;
+
+    return (
+      <Text $color="white" $size={14} $lineHeight="130%">
+        {error.message}
+      </Text>
+    );
+  };
+
   return (
     <ReactCardFlip isFlipped={!!showResult} flipDirection="horizontal">
-      <S.Form onSubmit={handleSubmit(onSubmit)}>
+      <S.Form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
         <S.InputContainer>
           <Controller
             name="goalName"
             control={control}
             rules={{ required: true }}
-            render={({ field }) => (
-              <Input {...field} placeholder="Descreva o seu objetivo" />
+            render={({ field, fieldState: { error } }) => (
+              <>
+                <Input {...field} placeholder="Descreva o seu objetivo" />
+                {error?.message && renderErrorMessage(error)}
+              </>
             )}
           />
-
-          {errors.goalName && (
-            <Text $color="white" $size={14} $lineHeight="130%">
-              Este campo é obrigatório
-            </Text>
-          )}
         </S.InputContainer>
 
         <S.InputContainer>
           <Controller
             name="initialValue"
             control={control}
-            rules={{ required: true }}
-            render={({ field }) => (
-              <Input
-                {...field}
-                placeholder="Informe o valor disponível para aplicar"
-              />
+            rules={{ required: true, min: 0 }}
+            render={({ field, fieldState: { error } }) => (
+              <>
+                <Input
+                  {...field}
+                  placeholder="Informe o valor disponível para aplicar"
+                  type="tel"
+                  mask="currency"
+                />
+                {error?.message && renderErrorMessage(error)}
+              </>
             )}
           />
-
-          {errors.initialValue && (
-            <Text $color="white" $size={14} $lineHeight="130%">
-              Este campo é obrigatório
-            </Text>
-          )}
         </S.InputContainer>
 
         <S.InputContainer>
           <Controller
             name="monthlyValue"
             control={control}
-            rules={{ required: true }}
-            render={({ field }) => (
-              <Input
-                {...field}
-                placeholder="Informe o valor de investimento mensal"
+            rules={{ required: true, min: 0 }}
+            render={({ field, fieldState: { error } }) => (
+              <>
+                <Input
+                  {...field}
+                  placeholder="Informe o valor de investimento mensal"
+                  type="tel"
+                  mask="currency"
+                />
+                {error?.message && renderErrorMessage(error)}
+              </>
+            )}
+          />
+        </S.InputContainer>
+
+        <Row>
+          <Col $size={{ lg: 7, sm: 12 }}>
+            <S.InputContainer>
+              <Controller
+                name="interestRate"
+                control={control}
+                rules={{ required: true, min: 1 }}
+                render={({ field, fieldState: { error } }) => (
+                  <>
+                    <Input
+                      {...field}
+                      placeholder="Informe a taxa de rendimento"
+                      type="tel"
+                      mask="percent"
+                      maskSuffix={isAnnualRate ? " a.a." : " a.m."}
+                    />
+                    {error?.message && renderErrorMessage(error)}
+                  </>
+                )}
               />
-            )}
-          />
+            </S.InputContainer>
+          </Col>
+          <Col $size={{ lg: 5, sm: 12 }}>
+            <S.InputContainer>
+              <Controller
+                name="isAnnualRate"
+                control={control}
+                rules={{ required: true }}
+                render={({
+                  field: { onChange, value, ...field },
+                  fieldState: { error },
+                }) => (
+                  <>
+                    <Select
+                      {...field}
+                      onChange={onChange}
+                      value={value ? String(value) : ""}
+                    >
+                      <option value="true">Anual</option>
+                      <option value="false">Mensal</option>
+                    </Select>
+                    {error?.message && renderErrorMessage(error)}
+                  </>
+                )}
+              />
+            </S.InputContainer>
+          </Col>
+        </Row>
 
-          {errors.monthlyValue && (
-            <Text $color="white" $size={14} $lineHeight="130%">
-              Este campo é obrigatório
-            </Text>
-          )}
-        </S.InputContainer>
-
-        <S.InputContainer>
-          <Controller
-            name="interestRate"
-            control={control}
-            rules={{ required: true }}
-            render={({ field }) => (
-              <Input {...field} placeholder="Informe a taxa de rendimento" />
-            )}
-          />
-          {errors.interestRate && (
-            <Text $color="white" $size={14} $lineHeight="130%">
-              Este campo é obrigatório
-            </Text>
-          )}
-        </S.InputContainer>
-
-        <S.InputContainer>
-          <Controller
-            name="isAnnualRate"
-            control={control}
-            rules={{ required: true }}
-            render={({ field }) => (
-              <Select {...field}>
-                <option value="A taxa é anual ou mensal?"></option>
-                <option value="true">Anual</option>
-                <option value="false">Mensal</option>
-              </Select>
-            )}
-          />
-          {errors.isYears && (
-            <Text $color="white" $size={14} $lineHeight="130%">
-              Este campo é obrigatório
-            </Text>
-          )}
-        </S.InputContainer>
-
-        <S.InputContainer>
-          <Controller
-            name="timePeriod"
-            control={control}
-            rules={{ required: true }}
-            render={({ field }) => (
-              <Input {...field} placeholder="Tempo de contribuição" />
-            )}
-          />
-          {errors.timePeriod && (
-            <Text $color="white" $size={14} $lineHeight="130%">
-              Este campo é obrigatório
-            </Text>
-          )}
-        </S.InputContainer>
-
-        <S.InputContainer>
-          <Controller
-            name="isYears"
-            control={control}
-            rules={{ required: true }}
-            render={({ field }) => (
-              <Select {...field}>
-                <option value="false">Meses</option>
-                <option value="true">Anos</option>
-              </Select>
-            )}
-          />
-          {errors.isYears && (
-            <Text $color="white" $size={14} $lineHeight="130%">
-              Este campo é obrigatório
-            </Text>
-          )}
-        </S.InputContainer>
+        <Row>
+          <Col $size={{ lg: 7, sm: 12 }}>
+            <S.InputContainer>
+              <Controller
+                name="timePeriod"
+                control={control}
+                rules={{ required: true, min: 1 }}
+                render={({ field, fieldState: { error } }) => (
+                  <>
+                    <Input
+                      {...field}
+                      placeholder="Tempo de contribuição"
+                      type="tel"
+                      mask="decimal"
+                      maskSuffix={isYears ? " anos" : " meses"}
+                    />
+                    {error?.message && renderErrorMessage(error)}
+                  </>
+                )}
+              />
+            </S.InputContainer>
+          </Col>
+          <Col $size={{ lg: 5, sm: 12 }}>
+            <S.InputContainer>
+              <Controller
+                name="isYears"
+                control={control}
+                rules={{ required: true }}
+                render={({
+                  field: { onChange, value, ...field },
+                  fieldState: { error },
+                }) => (
+                  <>
+                    <Select
+                      {...field}
+                      onChange={onChange}
+                      value={value ? String(value) : ""}
+                    >
+                      <option value="false">Meses</option>
+                      <option value="true">Anos</option>
+                    </Select>
+                    {error?.message && renderErrorMessage(error)}
+                  </>
+                )}
+              />
+            </S.InputContainer>
+          </Col>
+        </Row>
 
         <Button
           type="submit"

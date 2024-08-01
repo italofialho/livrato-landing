@@ -1,14 +1,15 @@
 "use client";
 
+import NextLink from "next/link";
 import styled from "styled-components";
 
 import { colors } from "@/const/colors";
 
-export const Background = styled.div({
+export const Background = styled.header({
   backgroundColor: colors.white,
-  position: "sticky",
   top: 0,
   zIndex: 100,
+  position: "sticky",
   boxShadow: "0px 0px 5px 0px rgba(0,0,0,0.1)",
 });
 
@@ -21,7 +22,7 @@ export const Container = styled.div({
   margin: "0 auto",
 });
 
-export const Link = styled.a({
+export const Link = styled(NextLink)({
   color: colors.graniteGray,
   fontSize: 16,
   lineHeight: "130%",

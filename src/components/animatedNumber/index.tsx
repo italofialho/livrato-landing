@@ -29,6 +29,7 @@ export function AnimatedNumber(props: Readonly<AnimatedNumberProps>) {
 function AnimatedNumberClientSide(props: Readonly<AnimatedNumberProps>) {
   return (
     <CountUp
+      enableScrollSpy
       start={props.$startValue}
       end={props.$value}
       duration={props.$duration ?? 2}

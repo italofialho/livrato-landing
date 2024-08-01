@@ -14,4 +14,5 @@ export const TextAreaStyled = styled.textarea({
   lineHeight: "130%",
   fontFamily: "var(--font-lato)",
   resize: "none",
+  borderRadius: 4,
 });

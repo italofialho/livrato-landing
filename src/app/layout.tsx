@@ -5,6 +5,7 @@ import { Lato, League_Spartan as LeagueSpartan } from "next/font/google";
 
 import StyledComponentsRegistry from "@/lib/registry";
 import "the-new-css-reset/css/reset.css";
+import "./global.css";
 
 const leagueSpartan = LeagueSpartan({ subsets: ["latin"] });
 const lato = Lato({

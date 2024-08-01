@@ -3,41 +3,9 @@ import Image from "next/image";
 import { Col, Container, Row } from "@/components/ui/grid";
 import { Spacer } from "@/components/ui/spacer";
 import { Text } from "@/components/ui/text";
+import { testimonials } from "@/const/testimonials";
 
 import * as S from "./styles";
-
-const cards: Array<{
-  name: string;
-  photo: string;
-  job: string;
-  testimonial: string;
-  stars: 5;
-}> = [
-  {
-    name: "Camila",
-    job: "Médica",
-    stars: 5,
-    photo: "/assets/clients/camila.png",
-    testimonial:
-      "“Sou extremamente bem atendida e confio que os conselhos a mim dados são os melhores para meus objetivos.”",
-  },
-  {
-    name: "João",
-    job: "Advogado",
-    stars: 5,
-    photo: "/assets/clients/joao.png",
-    testimonial:
-      "“A Livrato nos ajuda a organizar e ter clareza na hora de definir os investimentos baseados nos nossos objetivos.”",
-  },
-  {
-    name: "Lucas",
-    job: "Engenheiro Civil",
-    stars: 5,
-    photo: "/assets/clients/lucas.png",
-    testimonial:
-      "“Essa assessoria foi super importante para mim, me vez entender mais sobre os tipos de investimentos e poder ter a segurança para começar!”",
-  },
-];
 
 export default function HomePageTestimonialsSection() {
   return (
@@ -79,11 +47,11 @@ export default function HomePageTestimonialsSection() {
         <Row $justifyContent="center">
           <Col $size={{ lg: 10, sm: 12 }}>
             <S.Cards>
-              {cards.map((card) => (
-                <S.Card key={card.name}>
-                  {Array.from({ length: card.stars }).map((_, index) => (
+              {testimonials.map((testimonial) => (
+                <S.Card key={testimonial.name}>
+                  {Array.from({ length: testimonial.stars }).map((_, index) => (
                     <Image
-                      key={`star_${card.name}_${index + 1}`}
+                      key={`star_${testimonial.name}_${index + 1}`}
                       src="/assets/icons/star_solid.svg"
                       width={16}
                       height={16}
@@ -98,12 +66,12 @@ export default function HomePageTestimonialsSection() {
                     $weight={600}
                     $lineHeight="120%"
                   >
-                    {card.testimonial}
+                    {testimonial.testimonial}
                   </Text>
                   <Spacer $mb={16} />
                   <S.CardClientPhoto>
                     <Image
-                      src={card.photo}
+                      src={testimonial.photo}
                       width={48}
                       height={48}
                       alt=""
@@ -117,7 +85,7 @@ export default function HomePageTestimonialsSection() {
                         $weight={600}
                         $lineHeight="120%"
                       >
-                        {card.name}
+                        {testimonial.name}
                       </Text>
                       <Text
                         $color="davysGrey"
@@ -126,7 +94,7 @@ export default function HomePageTestimonialsSection() {
                         $lineHeight="100%"
                         $letterSpacing={0.42}
                       >
-                        {card.job}
+                        {testimonial.job}
                       </Text>
                     </div>
                   </S.CardClientPhoto>

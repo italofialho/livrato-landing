@@ -8,7 +8,7 @@ import * as S from "./styles";
 
 export default function HomePageSimulatorSection() {
   return (
-    <S.Background>
+    <S.Background id="calculadora">
       <Container>
         <Spacer $mb={112} />
         <Row>

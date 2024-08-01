@@ -1,11 +1,11 @@
 import React from "react";
 
-import type { ContainerProps, RowProps, ColProps } from "./interface";
+import type { ColProps, ContainerProps, RowProps } from "./interface";
 import * as S from "./styles";
 
-const Container: React.FC<ContainerProps> = ({ children, ...props }) => {
+const Container: React.FC<ContainerProps> = ({ children, id, ...props }) => {
   return (
-    <S.Container {...props}>
+    <S.Container id={id} {...props}>
       <S.ContainerMaxWidth>{children}</S.ContainerMaxWidth>
     </S.Container>
   );
@@ -28,4 +28,4 @@ const Col: React.FC<ColProps> = ({ $offset, ...props }) => {
   );
 };
 
-export { Container, Row, Col };
+export { Col, Container, Row };

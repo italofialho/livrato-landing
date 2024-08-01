@@ -3,36 +3,10 @@ import Image from "next/image";
 import { Col, Container, Row } from "@/components/ui/grid";
 import { Spacer } from "@/components/ui/spacer";
 import { Text } from "@/components/ui/text";
+import { socialMedias } from "@/const/socialMedias";
 
 import { ContactForm } from "./form";
 import * as S from "./styles";
-
-const socialMedias: Array<{
-  icon: string;
-  title: string;
-  link: string;
-}> = [
-  {
-    icon: "/assets/icons/whatsapp.svg",
-    title: "(31) 99377-6434",
-    link: "https://wa.me/+5531993776434",
-  },
-  {
-    icon: "/assets/icons/email.svg",
-    title: "contato@livratocapital.com.br",
-    link: "mail:contato@livratocapital.com.br",
-  },
-  {
-    icon: "/assets/icons/instagram.svg",
-    title: "Siga nosso Instagram",
-    link: "https://www.instagram.com/livratocapital",
-  },
-  {
-    icon: "/assets/icons/linkedin.svg",
-    title: "Siga nosso LinkedIn",
-    link: "https://www.linkedin.com/company/livrato-capital",
-  },
-];
 
 export default function HomePageContactSection() {
   return (
@@ -75,13 +49,15 @@ export default function HomePageContactSection() {
                   href={socialMedia.link}
                   target="_blank"
                 >
-                  <Image
-                    src={socialMedia.icon}
-                    quality={100}
-                    width={56}
-                    height={56}
-                    alt=""
-                  />
+                  <S.Icon>
+                    <Image
+                      src={socialMedia.icon}
+                      quality={100}
+                      width={23}
+                      height={23}
+                      alt=""
+                    />
+                  </S.Icon>
                   <Text
                     $color="graniteGray"
                     $size={24}

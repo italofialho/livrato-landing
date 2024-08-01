@@ -1,33 +1,19 @@
-import React from "react";
-
+import { Logo } from "@/components/logo";
 import { Button } from "@/components/ui/button";
+import { Container } from "@/components/ui/grid";
+import { Text } from "@/components/ui/text";
 
+import { HeaderLinks } from "./link";
 import * as S from "./styles";
-import { Logo } from "../logo";
-import { Container } from "../ui/grid";
-import { Text } from "../ui/text";
-
-const navItems: Array<{ title: string; url: string }> = [
-  { title: "Soluções", url: "#solucoes" },
-  { title: "Quem somos", url: "#quem-somos" },
-  { title: "Benefícios", url: "#beneficios" },
-  { title: "Calculadora", url: "#calculadora" },
-];
 
 export function Header() {
   return (
-    <S.Background>
+    <S.Background id="header">
       <Container>
         <S.Container>
           <Logo type="default" width={260} height={32} />
 
-          <S.Links>
-            {navItems.map((item) => (
-              <S.Link key={item.url} href={item.url}>
-                {item.title}
-              </S.Link>
-            ))}
-          </S.Links>
+          <HeaderLinks />
 
           <Button
             $color="richBlack"

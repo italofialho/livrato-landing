@@ -5,8 +5,8 @@ import styled, { css } from "styled-components";
 import { colors } from "@/const/colors";
 
 const MarqueeMixin = css({
-  width: "calc(100% + 10px)",
-  padding: "16px 0px 16px 34px",
+  width: "100%",
+  padding: "16px 0px 16px 0px",
   display: "flex",
   alignItems: "center",
 });

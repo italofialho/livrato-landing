@@ -38,6 +38,7 @@ export default function HomePageIndependentConsultancySection() {
               patrimônio global.
             </Text>
           </Col>
+
           <Col $size={{ lg: 3.5, sm: 12 }} $offset={0.5}>
             <S.Stats>
               <S.StatsItem>

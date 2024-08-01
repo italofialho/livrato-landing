@@ -10,7 +10,7 @@ import * as S from "./styles";
 
 export default function HomePageBenefitsSection() {
   return (
-    <S.Background>
+    <S.Background id="beneficios">
       <Container>
         <Spacer $mt={112} />
         <Row>

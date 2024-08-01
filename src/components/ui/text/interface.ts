@@ -8,6 +8,7 @@ export interface TextProps {
 
   $transform?: CSSProperties["textTransform"];
   $align?: CSSProperties["textAlign"];
+  $decoration?: CSSProperties["textDecoration"];
 
   $margin?: CSSProperties["margin"];
   $padding?: CSSProperties["padding"];

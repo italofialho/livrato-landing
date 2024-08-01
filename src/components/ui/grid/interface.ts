@@ -28,6 +28,7 @@ type gap = { lg: number; sm: number } | number | undefined;
 
 interface ContainerProps {
   children?: ReactNode;
+  id?: string;
 }
 
 interface RowProps {
@@ -50,4 +51,4 @@ interface ColProps {
   $id?: string;
 }
 
-export type { ContainerProps, RowProps, ColProps, gap, breakpoints };
+export type { breakpoints, ColProps, ContainerProps, gap, RowProps };

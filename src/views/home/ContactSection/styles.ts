@@ -31,3 +31,15 @@ export const SuccessForm = styled.div({
   alignItems: "center",
   minHeight: 527,
 });
+
+export const Icon = styled.div({
+  width: 56,
+  height: 56,
+  backgroundColor: colors.deepJungleGreen,
+  border: `1px solid ${colors.viridianGreen}`,
+
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  borderRadius: 8,
+});

@@ -4,51 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Col, Container, Row } from "@/components/ui/grid";
 import { Spacer } from "@/components/ui/spacer";
 import { Text } from "@/components/ui/text";
+import { solutions } from "@/const/solutions";
 
 import * as S from "./styles";
 
-const cards = [
-  {
-    title: "Gestão de orçamento",
-    icon: "/assets/icons/gestao.svg",
-    description:
-      "Ajudamos você a organizar suas finanças diárias, controlando gastos, otimizando seu orçamento e garantindo que suas despesas estejam alinhadas com seus objetivos financeiros.",
-  },
-  {
-    title: "Planejamento financeiro",
-    icon: "/assets/icons/financeiro.svg",
-    description:
-      "Ajudamos você a definir, planejar e alcançar seus objetivos de vida de forma eficiente e segura, seja a sua reserva de emergência, uma viagem ou os estudos dos seus filhos.",
-  },
-  {
-    title: "Alocação patrimonial",
-    icon: "/assets/icons/alocacao.svg",
-    description:
-      "Desenvolvemos uma estratégia personalizada para alocar seu patrimônio de forma eficiente, diversificando seus investimentos para maximizar retornos e minimizar riscos. ",
-  },
-  {
-    title: "Mapa de oportunidades",
-    icon: "/assets/icons/mapa.svg",
-    description:
-      "Com nosso mapa de oportunidades, você poderá explorar novos mercados e ativos, equilibrando seu portfólio e aumentando suas chances de sucesso financeiro.",
-  },
-  {
-    title: "Alavancagem financeira",
-    icon: "/assets/icons/alavancagem.svg",
-    description:
-      "Orientamos sobre como utilizar recursos de terceiros de maneira inteligente e segura para aumentar seu potencial de ganhos, sempre considerando os riscos envolvidos.",
-  },
-  {
-    title: "Planejamento sucessório",
-    icon: "/assets/icons/sucessorio.svg",
-    description:
-      "Oferecemos um planejamento sucessório completo, que inclui a estruturação de heranças, doações e criação de holding, com foco na proteção do seu legado.",
-  },
-];
-
 export default function HomePageSolutionsSection() {
   return (
-    <Container>
+    <Container id="solucoes">
       <Spacer $mb={80} />
       <Row $justifyContent="center">
         <Col $size={{ lg: 4, sm: 12 }}>
@@ -82,12 +44,12 @@ export default function HomePageSolutionsSection() {
 
       <S.Cards>
         <Row $gapRow={0} $gapColumn={0} $justifyContent="center">
-          {cards.map((card, index) => (
-            <Col key={card.icon} $size={{ lg: 4, sm: 12 }}>
+          {solutions.map((solution, index) => (
+            <Col key={solution.icon} $size={{ lg: 4, sm: 12 }}>
               <S.Card id={`solution-card-${index + 1}`}>
                 <Image
-                  alt={card.title}
-                  src={card.icon}
+                  alt={solution.title}
+                  src={solution.icon}
                   width={56}
                   height={56}
                 />
@@ -99,7 +61,7 @@ export default function HomePageSolutionsSection() {
                   $weight={600}
                   $lineHeight="100%"
                 >
-                  {card.title}
+                  {solution.title}
                 </Text>
                 <Spacer $mb={8} />
                 <Text
@@ -108,7 +70,7 @@ export default function HomePageSolutionsSection() {
                   $weight={400}
                   $lineHeight="130%"
                 >
-                  {card.description}
+                  {solution.description}
                 </Text>
 
                 <Spacer $mb={32} />

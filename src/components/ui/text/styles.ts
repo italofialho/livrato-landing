@@ -17,4 +17,5 @@ export const TextStyled = styled.span<Omit<TextProps, "children">>((props) => ({
   lineHeight: props.$lineHeight,
   letterSpacing: props.$letterSpacing,
   textAlign: props.$align,
+  textDecoration: props.$decoration,
 }));
